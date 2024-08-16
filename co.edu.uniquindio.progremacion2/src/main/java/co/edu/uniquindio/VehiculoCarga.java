@@ -1,3 +1,4 @@
+package co.edu.uniquindio;
 public class VehiculoCarga extends Vehiculo {
     private double capacidadCarga;
 
@@ -41,3 +42,4 @@ public class VehiculoCarga extends Vehiculo {
         this.capacidadCarga = capacidadCarga;
     }
 }
+

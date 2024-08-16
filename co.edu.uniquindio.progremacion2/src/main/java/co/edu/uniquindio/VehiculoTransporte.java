@@ -1,3 +1,4 @@
+package co.edu.uniquindio;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -57,3 +58,4 @@ public class VehiculoTransporte extends Vehiculo{
         this.usuarios = usuarios;
     }
 }
+

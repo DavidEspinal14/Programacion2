@@ -1,5 +1,6 @@
+package co.edu.uniquindio;
+
 import javax.swing.*;
-import java.beans.IntrospectionException;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -26,19 +27,19 @@ public class MainTransporte {
                         int opcion3 = JOptionPane.showOptionDialog(null,"Seleccione el vehiculo a asociar", "Menu agregar vehiculo", 0,1,null,opciones,opciones[0]);
                         if (opcion3 == 0) {
                             if(verificarListaVehiculos(empresa) == true){
-                                 Map<String, Vehiculo> temporal = new HashMap<>();
-                                 for(Vehiculo vehiculoArreglo : empresa.getVehiculos()){
-                                     if (vehiculoArreglo instanceof VehiculoTransporte) {
-                                         temporal.put("Transporte - "+vehiculoArreglo.getPlaca(), vehiculoArreglo);
-                                     } else if (vehiculoArreglo instanceof VehiculoCarga) {
-                                         temporal.put("Carga - "+vehiculoArreglo.getPlaca(), vehiculoArreglo);
-                                     }
-                                 }
-                                 String[] opcionesVehiculos = temporal.keySet().toArray(new String[0]);
-                                 String vehiculoSeleccionado = (String) JOptionPane.showInputDialog(null,"Seleccione el vehiculo de la lista: ", "Elegir",JOptionPane.QUESTION_MESSAGE,null,opcionesVehiculos, opcionesVehiculos[0]);
-                                 propietario.agregarVehiculo(temporal.get(vehiculoSeleccionado));
-                                 empresa.modificarPropietarioVehiculo(propietario,temporal.get(vehiculoSeleccionado));
-                                 empresa.agregarPropietarios(propietario);
+                                Map<String, Vehiculo> temporal = new HashMap<>();
+                                for(Vehiculo vehiculoArreglo : empresa.getVehiculos()){
+                                    if (vehiculoArreglo instanceof VehiculoTransporte) {
+                                        temporal.put("Transporte - "+vehiculoArreglo.getPlaca(), vehiculoArreglo);
+                                    } else if (vehiculoArreglo instanceof VehiculoCarga) {
+                                        temporal.put("Carga - "+vehiculoArreglo.getPlaca(), vehiculoArreglo);
+                                    }
+                                }
+                                String[] opcionesVehiculos = temporal.keySet().toArray(new String[0]);
+                                String vehiculoSeleccionado = (String) JOptionPane.showInputDialog(null,"Seleccione el vehiculo de la lista: ", "Elegir",JOptionPane.QUESTION_MESSAGE,null,opcionesVehiculos, opcionesVehiculos[0]);
+                                propietario.agregarVehiculo(temporal.get(vehiculoSeleccionado));
+                                empresa.modificarPropietarioVehiculo(propietario,temporal.get(vehiculoSeleccionado));
+                                empresa.agregarPropietarios(propietario);
                             }
                         }
                         break;

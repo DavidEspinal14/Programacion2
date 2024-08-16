@@ -1,3 +1,4 @@
+package co.edu.uniquindio;
 import com.sun.tools.javac.Main;
 
 import java.util.Collection;
@@ -94,3 +95,4 @@ public class Propietario {
         this.nombre = nombre;
     }
 }
+

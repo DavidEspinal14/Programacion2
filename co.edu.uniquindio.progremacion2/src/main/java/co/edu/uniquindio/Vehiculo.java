@@ -1,3 +1,4 @@
+package co.edu.uniquindio;
 public class Vehiculo {
 
     private String marca;
@@ -94,3 +95,4 @@ public class Vehiculo {
         this.propietario = propietario;
     }
 }
+
