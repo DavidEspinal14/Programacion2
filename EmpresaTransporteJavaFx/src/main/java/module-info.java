@@ -1,4 +1,4 @@
-module co.edu.uniquindio.co_edu_uniquindio_programacion2_javafx {
+module co.edu.uniquindio.javafx {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -13,4 +13,6 @@ module co.edu.uniquindio.co_edu_uniquindio_programacion2_javafx {
 
     opens co.edu.uniquindio.co_edu_uniquindio_programacion2_javafx to javafx.fxml;
     exports co.edu.uniquindio.co_edu_uniquindio_programacion2_javafx;
+    exports co.edu.uniquindio.co_edu_uniquindio_programacion2_javafx.controladores;
+    opens co.edu.uniquindio.co_edu_uniquindio_programacion2_javafx.controladores to javafx.fxml;
 }

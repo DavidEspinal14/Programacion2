@@ -1,4 +1,4 @@
-package co.edu.uniquindio.co_edu_uniquindio_programacion2_javafx;
+package co.edu.uniquindio.javafx.controladores;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

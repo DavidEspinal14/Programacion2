@@ -1,4 +1,4 @@
-package co.edu.uniquindio.co_edu_uniquindio_programacion2_javafx;
+package co.edu.uniquindio.javafx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +10,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("AjustesDeArranque.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 300, 200);
+        stage.setTitle("Ajustes de arranque");
         stage.setScene(scene);
         stage.show();
     }
