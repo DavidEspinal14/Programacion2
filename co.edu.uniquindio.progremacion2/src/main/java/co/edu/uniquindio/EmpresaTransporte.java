@@ -1,6 +1,7 @@
 package co.edu.uniquindio;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class EmpresaTransporte {
     private String nombre;
@@ -107,6 +108,18 @@ public class EmpresaTransporte {
             }
         }
         return cont;
+    }
+    /**
+     * Metodo para encontrar a los usuarios en un rango de edad
+     */
+    public Collection<Usuario> rangoEdad(Collection<Usuario> usuarios, double edadMinima, double edadMaxima) {
+        List<Usuario> rangoEdad = new ArrayList<Usuario>();
+        for (Usuario usuario : usuarios) {
+            if ((usuario.getEdad() < edadMaxima)&&(usuario.getEdad()>edadMinima)){
+                rangoEdad.add(usuario);
+            }
+        }
+        return rangoEdad;
     }
 }
     /*

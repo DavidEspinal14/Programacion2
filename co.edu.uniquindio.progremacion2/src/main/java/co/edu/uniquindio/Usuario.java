@@ -25,7 +25,7 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
     public void setEdad(String edad) {

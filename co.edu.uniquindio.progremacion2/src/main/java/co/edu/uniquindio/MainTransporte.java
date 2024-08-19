@@ -19,7 +19,7 @@ public class MainTransporte {
             EmpresaTransporte empresa = inicializarEmpresa();
             int opcion2 = 9;
             while (opcion2 != 0) {
-                opcion2 = (int) (entradaNumerica("EMPRESDA DE TRANSPORTE= " + empresa.getNombre() + "\n" + "1. Agregar Propietario\n 2. Pasajeros transportados en un dia\n 3. Informacion de los vehiculos \n 4. Lista peso usuarios \n 0. Salir"));
+                opcion2 = (int) (entradaNumerica("EMPRESDA DE TRANSPORTE= " + empresa.getNombre() + "\n" + "1. Agregar Propietario\n 2. Pasajeros transportados en un dia\n 3. Informacion de los vehiculos \n 4. Lista peso usuarios \n 5. Propietarios>40 \n 6. Rango edad \n 0. Salir"));
                 switch (opcion2) {
                     case 1:
                         Propietario propietario = Propietario.crearPropietario();
@@ -52,11 +52,28 @@ public class MainTransporte {
                         }
                         break;
                     case 4:
-                        StringBuilder resultado = new StringBuilder("Usuarios con peso >=" + EmpresaTransporte.getPesoMinimo() + ":\n");
-                        for (Usuario usuario : usuariosFiltrados) {
+                        StringBuilder resultado = new StringBuilder("Usuarios con peso >=" + empresa.getPesoMinimo() + ":\n");
+                        for (Usuario usuario : empresa.getUsuariosFiltrados) {
                             resultado.append("Usuario con peso: ").append(usuario.getPeso()).append(" kg\n");
                         }
                         JOptionPane.showMessageDialog(null, resultado.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
+                    case 5:
+
+                    case 6:
+                        String inputMinimo = JOptionPane.showInputDialog("Ingrese el valor mínimo:");
+                        String inputMaximo = JOptionPane.showInputDialog("Ingrese el valor máximo:");
+                        double edadMinima = Double.parseDouble(inputMinimo);
+                        double edadMaxima = Double.parseDouble(inputMaximo);
+                        StringBuilder resultado = new StringBuilder("Usuarios en el rango de edad:\n");
+                        for (Usuario usuario : empresa.getusuarios()) {
+                            resultado.append(usuario.toString()).append("\n");
+                        }
+                        JOptionPane.showMessageDialog(null, resultado.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                    }
+
+
                 }
             }
             opcion = 0;
