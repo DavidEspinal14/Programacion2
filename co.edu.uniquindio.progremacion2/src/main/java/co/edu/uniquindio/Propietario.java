@@ -9,6 +9,7 @@ public class Propietario {
     private String id;
     private String email;
     private String telefono;
+    private int edad;
     private Collection<Vehiculo> vehiculos;
 
     /**
@@ -18,11 +19,12 @@ public class Propietario {
      * @param email
      * @param telefono
      */
-    public Propietario(String nombre, String id, String email, String telefono) {
+    public Propietario(String nombre, String id, String email, String telefono, int edad) {
         this.nombre = nombre;
         this.id = id;
         this.email = email;
         this.telefono = telefono;
+        this.edad = edad;
         vehiculos = new LinkedList<Vehiculo>();
     }
 
@@ -44,8 +46,9 @@ public class Propietario {
         String id = MainTransporte.entradaTexto("Ingrese el id del propietario");
         String email = MainTransporte.entradaTexto("Ingrese el email de su propietario");
         String telefono = MainTransporte.entradaTexto("Ingrese el telefono de su propietario");
+        double edad = MainTransporte.entradaNumerica("Ingrese la edad de su propietario");
 
-        return new Propietario(nombre, id, email, telefono);
+        return new Propietario(nombre, id, email, telefono, 0);
     }
     /**
      * Metodo toString de propietario para obtener toda su info
@@ -75,6 +78,8 @@ public class Propietario {
         return telefono;
     }
 
+    public int getEdad() {return edad;}
+
     public Collection<Vehiculo> getVehiculos() {
         return vehiculos;
     }
@@ -94,5 +99,7 @@ public class Propietario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void setEdad(int edad) {this.edad = edad;}
 }
 

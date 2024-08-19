@@ -19,7 +19,7 @@ public class MainTransporte {
             EmpresaTransporte empresa = inicializarEmpresa();
             int opcion2 = 9;
             while (opcion2 != 0) {
-                opcion2 = (int) (entradaNumerica("EMPRESDA DE TRANSPORTE= " + empresa.getNombre() + "\n" + "1. Agregar Propietario\n 2. Pasajeros transportados en un dia\n 3. Informacion de los vehiculos \n 0. Salir"));
+                opcion2 = (int) (entradaNumerica("EMPRESDA DE TRANSPORTE= " + empresa.getNombre() + "\n" + "1. Agregar Propietario\n 2. Pasajeros transportados en un dia\n 3. Informacion de los vehiculos \n 4. Lista peso usuarios \n 0. Salir"));
                 switch (opcion2) {
                     case 1:
                         Propietario propietario = Propietario.crearPropietario();
@@ -51,19 +51,25 @@ public class MainTransporte {
                             JOptionPane.showMessageDialog(null,vehiculo.toString());
                         }
                         break;
+                    case 4:
+                        StringBuilder resultado = new StringBuilder("Usuarios con peso >=" + EmpresaTransporte.getPesoMinimo() + ":\n");
+                        for (Usuario usuario : usuariosFiltrados) {
+                            resultado.append("Usuario con peso: ").append(usuario.getPeso()).append(" kg\n");
+                        }
+                        JOptionPane.showMessageDialog(null, resultado.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
             opcion = 0;
         }
     }
     public static EmpresaTransporte inicializarEmpresa(){
-        EmpresaTransporte empresa = new EmpresaTransporte("Empresa prueba");
+        EmpresaTransporte empresa = new EmpresaTransporte("Empresa prueba", 60);
         VehiculoTransporte trans1 = new VehiculoTransporte("00000","Suzuki","2012","Zapote",10);
         VehiculoTransporte trans2 = new VehiculoTransporte("11111","Toyota","2010","Blanco",20);
         VehiculoCarga car1 = new VehiculoCarga("00000","Suzuki","2012","Zapote",20000);
-        Usuario usu1 = new Usuario("Fulano","18","123456");
-        Usuario usu2 = new Usuario("Karla","25","78910");
-        Usuario usu3 = new Usuario("Tomas","19","1071788");
+        Usuario usu1 = new Usuario("Fulano","18","123456", 75);
+        Usuario usu2 = new Usuario("Karla","25","78910", 58);
+        Usuario usu3 = new Usuario("Tomas","19","1071788", 80);
         trans1.agregarUsuario(usu1);
         trans1.agregarUsuario(usu2);
         trans2.agregarUsuario(usu3);
