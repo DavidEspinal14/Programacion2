@@ -1,11 +1,12 @@
 package co.edu.uniquindio;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class EmpresaTransporte {
-    private String nombre;
     private double pesoMinimo;
+    private String nombre;
     private Collection<VehiculoTransporte> vehiculosTransporte;
     private Collection<VehiculoCarga> vehiculosCarga;
     private Collection<Propietario> propietarios;
@@ -40,7 +41,9 @@ public class EmpresaTransporte {
         if (vehiculo instanceof VehiculoTransporte) {
             vehiculosTransporte.add((VehiculoTransporte) vehiculo);
             for ( Usuario usuario : ((VehiculoTransporte) vehiculo).getUsuarios() ) {
-                usuarios.add(usuario);
+                if (!verificarUsuarioRepetido(usuario,usuarios)) {
+                    usuarios.add(usuario);
+                }
             }
         } else if (vehiculo instanceof VehiculoCarga) {
             vehiculosCarga.add((VehiculoCarga) vehiculo);
@@ -53,7 +56,6 @@ public class EmpresaTransporte {
             }
         }
     }
-
     /**
      * Agregar propietario
      * @param propietario
@@ -86,51 +88,61 @@ public class EmpresaTransporte {
      * Metodo de la funcionalidad peso y filtrar por peso
      * @return
      */
-    public Collection<Usuario> filtrarPorPeso(Collection<Usuario>usuarios, double pesoMinimo) {
+    public void filtrarPorPeso() {
         for (Usuario usuario : usuarios) {
-            if (usuario.getPeso() >= pesoMinimo) {
+            if (usuario.getPeso() >= pesoMinimo && !verificarUsuarioRepetido(usuario, usuariosFiltrados)) {
                 usuariosFiltrados.add(usuario);
             }
         }
-        return usuariosFiltrados;
     }
 
     /**
-     * Metodo para identificar a las propietarios mayores de 40
-     * @param propietarios
+     * Metodo para verificar si ya hay un usuario en la lista de usuarios filtrados
+     * @param usuario
      * @return
      */
-    public int propietariosMayores (Propietario propietarios){
+    public boolean verificarUsuarioRepetido(Usuario usuario, Collection<Usuario> lista) {
+        boolean existe = false;
+        for (Usuario usuario1 : lista) {
+            if (usuario1 == usuario) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+    /**
+     *
+     * @param propietario
+     * @return cont
+     */
+    public int propietariosMayores (Propietario propietario){
         int cont = 0;
-        for (Propietario propietario: propietarios){
-            if (propietario.getEdad()>40){
+        for (Propietario propietario1: propietarios){
+            if (propietario1.getEdad()>40){
                 cont++;
             }
         }
         return cont;
     }
-    /**
-     * Metodo para encontrar a los usuarios en un rango de edad
-     */
-    public Collection<Usuario> rangoEdad(Collection<Usuario> usuarios, double edadMinima, double edadMaxima) {
-        List<Usuario> rangoEdad = new ArrayList<Usuario>();
-        for (Usuario usuario : usuarios) {
-            if ((usuario.getEdad() < edadMaxima)&&(usuario.getEdad()>edadMinima)){
-                rangoEdad.add(usuario);
+        /**
+         * Metodo para encontrar a los usuarios en un rango de edad
+         */
+        public Collection<Usuario> rangoEdad(Collection<Usuario> usuarios, double edadMinima, double edadMaxima) {
+            List<Usuario> rangoEdad = new ArrayList<Usuario>();
+            for (Usuario usuario : usuarios) {
+                if ((usuario.getEdad() < edadMaxima)&&(usuario.getEdad()>edadMinima)){
+                    rangoEdad.add(usuario);
+                }
             }
+            return rangoEdad;
         }
-        return rangoEdad;
-    }
-}
-    /*
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-     */
+
     public String getNombre() {
         return nombre;
     }
-    public double getPeso Minimo(){
+    public double getPesoMinimo(){
         return pesoMinimo;
-}
+    }
     public Collection<VehiculoTransporte> getVehiculosTransporte() {
         return vehiculosTransporte;
     }
@@ -152,6 +164,7 @@ public class EmpresaTransporte {
     }
 
     public Collection<Usuario> getUsuariosFiltrados(){
+            filtrarPorPeso();
         return usuariosFiltrados;
+    }
 }
-

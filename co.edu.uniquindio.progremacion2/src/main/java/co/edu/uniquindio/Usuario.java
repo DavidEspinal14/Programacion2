@@ -2,22 +2,21 @@ package co.edu.uniquindio;
 
 public class Usuario {
     private String nombre;
-    private String edad;
+    private int edad;
     private String telefono;
     private int peso;
     public Usuario() {
 
     }
-    public Usuario(String nombre, String edad, String telefono, int peso) {
-        assert nombre != null;
-        assert edad != null;
-        assert telefono != null;
-        assert peso > 0;
+    public Usuario(String nombre, int edad, String telefono, int peso) {
         this.nombre = nombre;
         this.edad = edad;
         this.telefono = telefono;
         this.peso = peso;
 
+    }
+    public String toString(){
+        return "========INFORMACION DEL USUARIO=========\n"+ "Nombre: "+nombre+"\n"+ "Telefono: "+telefono+"\n==================================\n";
     }
     public String getNombre() {
         return nombre;
@@ -28,7 +27,7 @@ public class Usuario {
     public int getEdad() {
         return edad;
     }
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
     public String getTelefono() {

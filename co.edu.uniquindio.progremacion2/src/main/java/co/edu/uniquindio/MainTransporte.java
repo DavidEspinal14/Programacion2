@@ -23,22 +23,22 @@ public class MainTransporte {
                 switch (opcion2) {
                     case 1:
                         Propietario propietario = Propietario.crearPropietario();
-                        String[] opciones = {"Lista de vehiculos" , "Crear uno nuevo"};
-                        int opcion3 = JOptionPane.showOptionDialog(null,"Seleccione el vehiculo a asociar", "Menu agregar vehiculo", 0,1,null,opciones,opciones[0]);
+                        String[] opciones = {"Lista de vehiculos", "Crear uno nuevo"};
+                        int opcion3 = JOptionPane.showOptionDialog(null, "Seleccione el vehiculo a asociar", "Menu agregar vehiculo", 0, 1, null, opciones, opciones[0]);
                         if (opcion3 == 0) {
-                            if(verificarListaVehiculos(empresa) == true){
+                            if (verificarListaVehiculos(empresa) == true) {
                                 Map<String, Vehiculo> temporal = new HashMap<>();
-                                for(Vehiculo vehiculoArreglo : empresa.getVehiculos()){
+                                for (Vehiculo vehiculoArreglo : empresa.getVehiculos()) {
                                     if (vehiculoArreglo instanceof VehiculoTransporte) {
-                                        temporal.put("Transporte - "+vehiculoArreglo.getPlaca(), vehiculoArreglo);
+                                        temporal.put("Transporte - " + vehiculoArreglo.getPlaca(), vehiculoArreglo);
                                     } else if (vehiculoArreglo instanceof VehiculoCarga) {
-                                        temporal.put("Carga - "+vehiculoArreglo.getPlaca(), vehiculoArreglo);
+                                        temporal.put("Carga - " + vehiculoArreglo.getPlaca(), vehiculoArreglo);
                                     }
                                 }
                                 String[] opcionesVehiculos = temporal.keySet().toArray(new String[0]);
-                                String vehiculoSeleccionado = (String) JOptionPane.showInputDialog(null,"Seleccione el vehiculo de la lista: ", "Elegir",JOptionPane.QUESTION_MESSAGE,null,opcionesVehiculos, opcionesVehiculos[0]);
+                                String vehiculoSeleccionado = (String) JOptionPane.showInputDialog(null, "Seleccione el vehiculo de la lista: ", "Elegir", JOptionPane.QUESTION_MESSAGE, null, opcionesVehiculos, opcionesVehiculos[0]);
                                 propietario.agregarVehiculo(temporal.get(vehiculoSeleccionado));
-                                empresa.modificarPropietarioVehiculo(propietario,temporal.get(vehiculoSeleccionado));
+                                empresa.modificarPropietarioVehiculo(propietario, temporal.get(vehiculoSeleccionado));
                                 empresa.agregarPropietarios(propietario);
                             }
                         }
@@ -47,46 +47,47 @@ public class MainTransporte {
                         generarReporteTransporte(empresa);
                         break;
                     case 3:
-                        for (Vehiculo vehiculo: empresa.getVehiculos()) {
-                            JOptionPane.showMessageDialog(null,vehiculo.toString());
+                        for (Vehiculo vehiculo : empresa.getVehiculos()) {
+                            JOptionPane.showMessageDialog(null, vehiculo.toString());
                         }
                         break;
                     case 4:
                         StringBuilder resultado = new StringBuilder("Usuarios con peso >=" + empresa.getPesoMinimo() + ":\n");
-                        for (Usuario usuario : empresa.getUsuariosFiltrados) {
+                        for (Usuario usuario : empresa.getUsuariosFiltrados()) {
                             resultado.append("Usuario con peso: ").append(usuario.getPeso()).append(" kg\n");
                         }
                         JOptionPane.showMessageDialog(null, resultado.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
+                        break;
                     case 5:
-
+                        JOptionPane.showMessageDialog(null, "Aun estamos trabajando en esta seccion");
+                        break;
                     case 6:
                         String inputMinimo = JOptionPane.showInputDialog("Ingrese el valor mínimo:");
                         String inputMaximo = JOptionPane.showInputDialog("Ingrese el valor máximo:");
                         double edadMinima = Double.parseDouble(inputMinimo);
+
                         double edadMaxima = Double.parseDouble(inputMaximo);
-                        StringBuilder resultado = new StringBuilder("Usuarios en el rango de edad:\n");
-                        for (Usuario usuario : empresa.getusuarios()) {
-                            resultado.append(usuario.toString()).append("\n");
+                        StringBuilder resultado2 = new StringBuilder("Usuarios en el rango de edad:\n");
+                        for (Usuario usuario : empresa.getUsuarios()) {
+                            resultado2.append(usuario.toString());
                         }
-                        JOptionPane.showMessageDialog(null, resultado.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, resultado2.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
+                        break;
                 }
-
-                    }
-
-
-                }
+                opcion = 0;
             }
-            opcion = 0;
         }
     }
-    public static EmpresaTransporte inicializarEmpresa(){
+
+
+    public static EmpresaTransporte inicializarEmpresa() {
         EmpresaTransporte empresa = new EmpresaTransporte("Empresa prueba", 60);
-        VehiculoTransporte trans1 = new VehiculoTransporte("00000","Suzuki","2012","Zapote",10);
-        VehiculoTransporte trans2 = new VehiculoTransporte("11111","Toyota","2010","Blanco",20);
-        VehiculoCarga car1 = new VehiculoCarga("00000","Suzuki","2012","Zapote",20000);
-        Usuario usu1 = new Usuario("Fulano","18","123456", 75);
-        Usuario usu2 = new Usuario("Karla","25","78910", 58);
-        Usuario usu3 = new Usuario("Tomas","19","1071788", 80);
+        VehiculoTransporte trans1 = new VehiculoTransporte("00000", "Suzuki", "2012", "Zapote", 10);
+        VehiculoTransporte trans2 = new VehiculoTransporte("11111", "Toyota", "2010", "Blanco", 20);
+        VehiculoCarga car1 = new VehiculoCarga("00000", "Suzuki", "2012", "Zapote", 20000);
+        Usuario usu1 = new Usuario("Fulano", 18, "123456", 75);
+        Usuario usu2 = new Usuario("Karla", 25, "78910", 58);
+        Usuario usu3 = new Usuario("Tomas", 19, "1071788", 80);
         trans1.agregarUsuario(usu1);
         trans1.agregarUsuario(usu2);
         trans2.agregarUsuario(usu3);
@@ -97,21 +98,24 @@ public class MainTransporte {
         empresa.agregarVehiculo(car1);
         return empresa;
     }
-    public static void generarReporteTransporte(EmpresaTransporte empresa){
-        int cont = 0 ;
+
+    public static void generarReporteTransporte(EmpresaTransporte empresa) {
+        int cont = 0;
         String info = "==================== REPORTE DE USUARIOS TRANSPORTADOS =======================\n";
-        for (VehiculoTransporte vehiculoTransporte: empresa.getVehiculosTransporte()){
-            for(Usuario usuario: vehiculoTransporte.getUsuarios()){
+        for (VehiculoTransporte vehiculoTransporte : empresa.getVehiculosTransporte()) {
+            for (Usuario usuario : vehiculoTransporte.getUsuarios()) {
                 cont++;
             }
             info += vehiculoTransporte.getMarca() + " = " + cont + "\n";
             cont = 0;
         }
         info += "Total de usuarios transportados = " + empresa.calcularPasajerosAlDia();
-        JOptionPane.showMessageDialog(null,info);
+        JOptionPane.showMessageDialog(null, info);
     }
+
     /**
      * Metodo para verificar que hay vehiculos en la lista de la empresa
+     *
      * @param empresa
      * @return
      */
@@ -122,8 +126,10 @@ public class MainTransporte {
         }
         return lista;
     }
+
     /**
      * Metodo para leer entradas de texto
+     *
      * @param info
      * @return resultado
      */
@@ -131,11 +137,11 @@ public class MainTransporte {
         String resultado = "";
         boolean entradaVelida = false;
         while (!entradaVelida) {
-            try{
+            try {
                 resultado = JOptionPane.showInputDialog(info);
                 if (resultado == null) {
                     break;
-                }else {
+                } else {
                     entradaVelida = true;
                 }
             } catch (Exception e) {
@@ -147,6 +153,7 @@ public class MainTransporte {
 
     /**
      * Metodo para agregar entradas numericas
+     *
      * @param info
      * @return resultado
      */
@@ -154,11 +161,11 @@ public class MainTransporte {
         double resultado = 0;
         boolean entradaVelida = false;
         while (!entradaVelida) {
-            try{
+            try {
                 String entrada = JOptionPane.showInputDialog(info);
                 if (entrada == null) {
                     break;
-                }else {
+                } else {
                     resultado = Integer.parseInt(entrada);
                     entradaVelida = true;
                 }
