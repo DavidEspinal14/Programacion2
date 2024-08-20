@@ -4,6 +4,9 @@ import com.sun.tools.javac.Main;
 import java.util.Collection;
 import java.util.LinkedList;
 
+/**
+ * Clase propietario y atributos
+ */
 public class Propietario {
     private String nombre;
     private String id;
@@ -33,6 +36,11 @@ public class Propietario {
      */
     public Propietario() {
     }
+
+    /**
+     * Metodo para agregar vehiculo al propietario
+     * @param vehiculo
+     */
     public void agregarVehiculo(Vehiculo vehiculo) {
         vehiculos.add(vehiculo);
     }

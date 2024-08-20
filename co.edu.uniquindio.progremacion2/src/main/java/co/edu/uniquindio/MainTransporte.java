@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+ * Clase Main
+ */
 public class MainTransporte {
 
     public static void main(String[] args) {
@@ -51,6 +54,11 @@ public class MainTransporte {
 
         }
     }
+
+    /**
+     * Menu Analitico de vehiculos
+     * @param empresa
+     */
     public static void menuAnaliticasDeVehiculos(EmpresaTransporte empresa) {
         String[] opciones = {"Mostrar informacion","Buscar vehiculo","Regresar"};
         int bucle = 1;
@@ -123,6 +131,11 @@ public class MainTransporte {
             JOptionPane.showMessageDialog(null, "Aun estamos trabajando en estas funcionalidades");
         }
     }
+
+    /**
+     * Menu para seleccionar opciones de propietarios
+     * @param empresa
+     */
     public static  void menuAnaliticasConPropietarios(EmpresaTransporte empresa) {
         String[] opciones = {"Propietarios Mayores", "Regresar"};
         int bucle = 1;
@@ -146,7 +159,7 @@ public class MainTransporte {
         }
     }
     /**
-     *
+     *Menu para seleccionar opciones del usuario
      * @param empresa
      */
     public static void menuAnaliticasUsuarios(EmpresaTransporte empresa) {
@@ -194,7 +207,7 @@ public class MainTransporte {
     }
 
     /**
-     *
+     *Metodo para capturar el rango del usuario y mostrar los usuarios en joptionpane
      * @param empresa
      */
     public static void generarAnaliticaUsuariosPorRangoDeEdad(EmpresaTransporte empresa) {
@@ -206,7 +219,7 @@ public class MainTransporte {
         }
         JOptionPane.showMessageDialog(null, resultado2.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
     }
-    /**
+    /**Metodo para mostrar usuarios por peso en joptionpane
      *
      * @param empresa
      */
@@ -218,7 +231,7 @@ public class MainTransporte {
         JOptionPane.showMessageDialog(null, resultado.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
     }
     /**
-     *
+     *Metodo para generar el reporte de usuarios transportados
      * @param empresa
      */
     public static void generarReporteTransporte(EmpresaTransporte empresa) {

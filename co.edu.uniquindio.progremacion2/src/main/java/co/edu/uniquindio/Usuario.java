@@ -1,5 +1,8 @@
 package co.edu.uniquindio;
 
+/**
+ * Clase usuario y constructor
+ */
 public class Usuario {
     private String nombre;
     private int edad;
@@ -15,9 +18,19 @@ public class Usuario {
         this.peso = peso;
 
     }
+
+    /**
+     * Metodo toString utilizado para mostrarlo en el main
+     * @return
+     */
     public String toString(){
         return "========INFORMACION DEL USUARIO=========\n"+ "Nombre: "+nombre+"\n"+ "Telefono: "+telefono+"\n==================================\n";
     }
+
+    /**
+     * Gets y Sets
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }

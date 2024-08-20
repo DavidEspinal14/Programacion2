@@ -2,6 +2,9 @@ package co.edu.uniquindio;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Clase Hija VehiculoTransporte
+ */
 public class VehiculoTransporte extends Vehiculo{
     private int maxPasajeros;
     private Collection<Usuario> usuarios;
@@ -42,6 +45,10 @@ public class VehiculoTransporte extends Vehiculo{
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      */
 
+    /**
+     * Gets y Sets
+     * @return
+     */
     public int getMaxPasajeros() {
         return maxPasajeros;
     }

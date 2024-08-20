@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Clase Empresa de Transporte
+ */
 public class EmpresaTransporte {
     private double pesoMinimo;
     private String nombre;
@@ -50,6 +53,12 @@ public class EmpresaTransporte {
             vehiculosCarga.add((VehiculoCarga) vehiculo);
         }
     }
+
+    /**
+     * Metodo para cambiar a un vehiculo de propietario
+     * @param propietario
+     * @param vehiculo
+     */
     public void modificarPropietarioVehiculo(Propietario propietario, Vehiculo vehiculo) {
         for(Vehiculo vehiculo1 : vehiculos) {
             if(vehiculo1 == vehiculo) {
@@ -113,6 +122,11 @@ public class EmpresaTransporte {
         }
         return existe;
     }
+
+    /**
+     * Metodo para verificar si hay propietarios en la lista de propietarios
+     * @return
+     */
     public boolean verificarListaPropietarios(){
         boolean lista = false;
         if (propietarios.size() > 0) {
@@ -121,7 +135,7 @@ public class EmpresaTransporte {
         return lista;
     }
     /**
-     *
+     *Metodo para mostrar la cantidad de propietarios mayores de 40 años
      * @return cont
      */
     public void mostrarPropietariosMayores (){
@@ -166,6 +180,10 @@ public class EmpresaTransporte {
 
     }
 
+    /**
+     * Metodos get y set
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }

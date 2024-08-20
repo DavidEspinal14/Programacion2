@@ -1,4 +1,8 @@
 package co.edu.uniquindio;
+
+/**
+ * Clase Hija VehiculoCarga
+ */
 public class VehiculoCarga extends Vehiculo {
     private double capacidadCarga;
 
@@ -34,6 +38,10 @@ public class VehiculoCarga extends Vehiculo {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      */
 
+    /**
+     * Gets y Sets
+     * @return
+     */
     public double getCapacidadCarga() {
         return capacidadCarga;
     }

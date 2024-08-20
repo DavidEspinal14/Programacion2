@@ -1,6 +1,8 @@
 package co.edu.uniquindio;
 public class Vehiculo {
-
+    /**
+     * Clase Vehiculo y atributos
+     */
     private String marca;
     private String modelo;
     private String placa;
