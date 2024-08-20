@@ -14,8 +14,8 @@ public class VehiculoTransporte extends Vehiculo{
      * @param color
      * @param maxPasajeros
      */
-    public VehiculoTransporte(String placa, String marca, String modelo, String color, int maxPasajeros){
-        super(placa, marca, modelo, color);
+    public VehiculoTransporte(String marca, String modelo, String placa, String color, int maxPasajeros){
+        super(marca, modelo, placa, color);
         this.maxPasajeros = maxPasajeros;
         this.usuarios = new ArrayList<Usuario>();
     }

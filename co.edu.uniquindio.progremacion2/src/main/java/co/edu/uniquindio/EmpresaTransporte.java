@@ -1,5 +1,6 @@
 package co.edu.uniquindio;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -78,8 +79,10 @@ public class EmpresaTransporte {
      */
     public int calcularPasajerosAlDia(){
         int cont = 0;
-        for (Usuario usuario : usuarios) {
-            cont++;
+        for (VehiculoTransporte vehiculoTransporte : vehiculosTransporte) {
+            for (Usuario usuario : vehiculoTransporte.getUsuarios()) {
+                cont ++;
+            }
         }
         return cont;
     }
@@ -110,19 +113,28 @@ public class EmpresaTransporte {
         }
         return existe;
     }
+    public boolean verificarListaPropietarios(){
+        boolean lista = false;
+        if (propietarios.size() > 0) {
+            lista = true;
+        }
+        return lista;
+    }
     /**
      *
-     * @param propietario
      * @return cont
      */
-    public int propietariosMayores (Propietario propietario){
-        int cont = 0;
-        for (Propietario propietario1: propietarios){
-            if (propietario1.getEdad()>40){
-                cont++;
+    public void mostrarPropietariosMayores (){
+        String info = "";
+        for (Propietario propietario: propietarios){
+            if (propietario.getEdad()>40){
+                info += propietario.toString();
             }
         }
-        return cont;
+        if (info == ""){
+            info += "No hay ningun propietario mayor a 40 años";
+        }
+        JOptionPane.showMessageDialog(null, info);
     }
         /**
          * Metodo para encontrar a los usuarios en un rango de edad
@@ -136,6 +148,23 @@ public class EmpresaTransporte {
             }
             return rangoEdad;
         }
+    public void mostrarVehiculoYUsuariosTransportados(String placa){
+        String info = "=========INFORMACION DEL VEHICULO=========\n";
+        int cont = 0;
+        for (Vehiculo vehiculo : vehiculos) {
+            if (vehiculo.getPlaca().equals(placa) && vehiculo instanceof VehiculoTransporte) {
+                for (Usuario usuario : ((VehiculoTransporte) vehiculo).getUsuarios()) {
+                    cont++;
+                }
+                info += vehiculo.toString() + "================================\nNumero de usuarios transportados: "+ cont +"\n================================\n";
+                cont =0;
+            } else if ( vehiculo.getPlaca().equals(placa) && vehiculo instanceof VehiculoCarga) {
+                info += vehiculo.toString();
+            }
+        }
+        JOptionPane.showMessageDialog(null, info);
+
+    }
 
     public String getNombre() {
         return nombre;

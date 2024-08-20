@@ -45,9 +45,9 @@ public class Vehiculo {
     public String toString(){
         String info = "";
         if (propietario != null) {
-            info = propietario.toString() + "=======================INFORMACION DEL VEHICULO=======================\n" + "Marca: " + marca + "\n" + "Modelo: " + modelo + "\n" + "Color: " + color + "\n";
+            info = propietario.toString() + "=======================INFORMACION DEL VEHICULO=======================\n" + "Marca: " + marca + "\n" + "Placa: " + placa +"\n" + "Modelo: " + modelo + "\n" + "Color: " + color + "\n";
         }else{
-            info = "=======================INFORMACION DEL VEHICULO=======================\n" + "Marca: " + marca + "\n" + "Modelo: " + modelo + "\n" + "Color: " + color + "\n";
+            info = "=======================INFORMACION DEL VEHICULO=======================\n" + "Marca: " + marca + "\n" + "Modelo: " + modelo +"\n"+ "Placa: " + placa +"\n" + "Color: " + color + "\n";
         }
         return info;
     }
@@ -92,6 +92,7 @@ public class Vehiculo {
     }
 
     public void setPropietario(Propietario propietario) {
+
         this.propietario = propietario;
     }
 }

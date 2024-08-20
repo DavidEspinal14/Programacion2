@@ -10,8 +10,8 @@ public class VehiculoCarga extends Vehiculo {
      * @param placa
      * @param capacidad
      */
-    public VehiculoCarga(String marca, String modelo, String color, String placa, double capacidad) {
-        super(placa, marca, modelo, color);
+    public VehiculoCarga(String marca, String modelo, String placa, String color, double capacidad) {
+        super(marca, modelo, placa, color);
         this.capacidadCarga = capacidad;
     }
 

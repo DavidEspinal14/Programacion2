@@ -46,15 +46,15 @@ public class Propietario {
         String id = MainTransporte.entradaTexto("Ingrese el id del propietario");
         String email = MainTransporte.entradaTexto("Ingrese el email de su propietario");
         String telefono = MainTransporte.entradaTexto("Ingrese el telefono de su propietario");
-        double edad = MainTransporte.entradaNumerica("Ingrese la edad de su propietario");
+        int edad = (int) MainTransporte.entradaNumerica("Ingrese la edad de su propietario");
 
-        return new Propietario(nombre, id, email, telefono, 0);
+        return new Propietario(nombre, id, email, telefono, edad);
     }
     /**
      * Metodo toString de propietario para obtener toda su info
      */
     public String toString(){
-        return "=======================INFORMACION DEL PROPIETARIO=======================\n" + "nombre: " + nombre + "\n" + "id: " + id + "\n" + "email: " + email + "\n" + "telefono: " + telefono + "\n" + "=========================================================================\n";
+        return "=======================INFORMACION DEL PROPIETARIO=======================\n" + "nombre: " + nombre + "\n" +"Edad: "+ edad + "\n" + "id: " + id + "\n" + "email: " + email + "\n" + "telefono: " + telefono + "\n" + "=========================================================================\n";
     }
     /*
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
