@@ -153,7 +153,7 @@ public class EmpresaTransporte {
         /**
          * Metodo para encontrar a los usuarios en un rango de edad
          */
-        public Collection<Usuario> rangoEdad(Collection<Usuario> usuarios, double edadMinima, double edadMaxima) {
+        public Collection<Usuario> rangoEdad(double edadMinima, double edadMaxima) {
             List<Usuario> rangoEdad = new ArrayList<Usuario>();
             for (Usuario usuario : usuarios) {
                 if ((usuario.getEdad() < edadMaxima)&&(usuario.getEdad()>edadMinima)){

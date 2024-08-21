@@ -214,7 +214,7 @@ public class MainTransporte {
         double edadMinima = entradaNumerica("Ingrese el valor mínimo:");
         double edadMaxima = entradaNumerica("Ingrese el valor maximo");
         StringBuilder resultado2 = new StringBuilder("Usuarios en el rango de edad:\n");
-        for (Usuario usuario : empresa.getUsuarios()) {
+        for (Usuario usuario : empresa.rangoEdad(edadMinima, edadMaxima)) {
             resultado2.append(usuario.toString());
         }
         JOptionPane.showMessageDialog(null, resultado2.toString(), "Usuarios Filtrados", JOptionPane.INFORMATION_MESSAGE);
